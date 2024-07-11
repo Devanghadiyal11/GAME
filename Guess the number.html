@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type=number] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Number Game</h1>
+    <p>Guess the number between 1 and 100:</p>
+    <input type="number" id="userInput" min="1" max="100">
+    <button onclick="ca()">Guess</button>
+    <p id="result"></p>
+      <p id="sankhya"></p>
+    
+
+
+    <script>
+        // Generate a random number between 1 and 100
+        let n = Math.floor(Math.random() * 100) + 1;
+        console.log("Random Number (for debugging):", n); // For debugging purposes
+ 		let count=0;
+        function checkNumber() {
+        	
+            let userInput = parseInt(document.getElementById("userInput").value);
+            let resultElement = document.getElementById("result");
+             
+            if (userInput === n) {
+                resultElement.textContent = "Congratulations! You guessed the correct number.";
+                resultElement.style.color = "green";
+              
+                
+            } 
+            
+            else {
+            	
+            	let nearbyNumbers = [];
+                	if (n > 1) nearbyNumbers.push(n - 5);
+                    if (n < 100) nearbyNumbers.push(n + 5);
+                
+                resultElement.textContent = "Incorrect. Nearby numbers are: " + nearbyNumbers.join(", ");
+                resultElement.style.color = "red";
+               
+                count=count+1;
+                  
+            }
+            
+        } 
+        function ca(){
+        	let co=document.getElementById("sankhya");
+        	checkNumber()
+        	co.textContent=count;
+        }
+
+         
+       
+    </script>
+</body>
+</html>
